@@ -51,7 +51,7 @@ class DossierEndpoint extends Endpoint
      */
     public function detail(string $dossier_id)
     {
-        return $this->client()->get(self::BASE_URI, ['dossier_id' => $dossier_id]);
+        return $this->client()->get(self::BASE_URI . "/{$dossier_id}");
     }
 
     /**
@@ -61,7 +61,7 @@ class DossierEndpoint extends Endpoint
      */
     public function cancel(string $dossier_id)
     {
-        return $this->client()->put(self::BASE_URI."/{$dossier_id}/cancel");
+        return $this->client()->put(self::BASE_URI . "/{$dossier_id}/cancel");
     }
 
     protected function rules(): array
