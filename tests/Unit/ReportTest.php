@@ -32,10 +32,24 @@ class ReportTest extends TestCase
     {
         $service = new JusBrasilService();
 
-        $response = $service->dossier()->detail(config('jusbrasil.dossier_id'));
+        $response = $service->dossier()->detail(env('JUSBRASIL_DOSSIER_ID'));
 
         $data = $response->json();
 
-        $this->assertArrayHasKey('results', $data);
+        $this->assertArrayHasKey('_id', $data);
+    }
+
+    /**
+     * @test
+     */
+    public function canListFilesDossier()
+    {
+        $service = new JusBrasilService();
+
+        $response = $service->dossier()->files(env('JUSBRASIL_DOSSIER_ID'));
+
+        $data = $response->json();
+
+        $this->assertArrayHasKey('files', $data);
     }
 }
