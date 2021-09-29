@@ -5,5 +5,4 @@ return [
     'api' => env('JUSBRASIL_API', '/v5'),
     'token' => env('JUSBRASIL_TOKEN'),
     'webhook' => env('JUSBRASIL_WEBHOOK'),
-    'dossier_id' => env('JUSBRASIL_DOSSIER_ID'),
 ];
