@@ -64,6 +64,26 @@ class DossierEndpoint extends Endpoint
         return $this->client()->put(self::BASE_URI . "/{$dossier_id}/cancel");
     }
 
+    /**
+     * @ref https://dossier-api.jusbrasil.com.br/#cancelando-uma-busca-put
+     * @param string $dossier_id
+     * @return mixed
+     */
+    public function files(string $dossier_id)
+    {
+        return $this->client()->get(self::BASE_URI . "/{$dossier_id}/files");
+    }
+
+    /**
+     * @param string $dossier_id
+     * @param string $published_file_id
+     * @return \GuzzleHttp\Promise\PromiseInterface|\Illuminate\Http\Client\Response
+     */
+    public function download(string $dossier_id, string $published_file_id)
+    {
+        return $this->client()->get(self::BASE_URI . "/{$dossier_id}/files/{$published_file_id}");
+    }
+
     protected function rules(): array
     {
         return [
