@@ -71,17 +71,16 @@ class DossierEndpoint extends Endpoint
      */
     public function files(string $dossier_id)
     {
-        return $this->client()->get(self::BASE_URI . "/{$dossier_id}/files");
+        return $this->client()->get(self::BASE_URI . "/{$dossier_id}/files?offset=0&protocol=https");
     }
 
     /**
-     * @param string $dossier_id
-     * @param string $published_file_id
+     * @param string $url
      * @return \GuzzleHttp\Promise\PromiseInterface|\Illuminate\Http\Client\Response
      */
-    public function download(string $dossier_id, string $published_file_id)
+    public function download(string $url)
     {
-        return $this->client()->get(self::BASE_URI . "/{$dossier_id}/files/{$published_file_id}");
+        return $this->client()->baseUrl('')->get($url);
     }
 
     protected function rules(): array
