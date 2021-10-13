@@ -20,12 +20,17 @@ class JusBrasilService
 
     /**
      * JusBrasilService constructor.
-     * @throws \Exception
+     * @param int|null $maxAge
      */
-    public function __construct()
+    public function __construct(?int $maxAge = null)
     {
+        $maxAge = $maxAge ?? Config::get('jusbrasil.cache_control');
+
         $this->http = Http::withoutVerifying()
             ->baseUrl(Config::get('jusbrasil.host') . Config::get('jusbrasil.api'))
+            ->withHeaders([
+                'Cache-Control' => 'max-age='.$maxAge
+            ])
             ->withToken(Config::get('jusbrasil.token'), '');
 
         $this->dossier =  new DossierEndpoint($this->http);
