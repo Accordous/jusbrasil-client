@@ -52,4 +52,22 @@ class ReportTest extends TestCase
 
         $this->assertArrayHasKey('files', $data);
     }
+
+    /**
+     * @test
+     */
+    public function canDownloadFileDossier()
+    {
+        $service = new JusBrasilService();
+
+        $response = $service->dossier()->files(env('JUSBRASIL_DOSSIER_ID'));
+
+        $data = $response->json();
+
+        $response = $service->dossier()->download($data['files'][0]);
+
+        $data = $response->json();
+
+        $this->assertArrayHasKey('_id', $data);
+    }
 }
