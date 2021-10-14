@@ -31,7 +31,7 @@ class DossierEndpoint extends Endpoint
             'exclude' => $exclude,
             'kind' => 'LAWSUIT',
             'artifacts' => ['lawsuits'],
-            'webhook_url' => Config::get('jusbrasil.webhook') ?? ''
+            'webhook_url' => Config::get('jusbrasil.webhook')
         ]);
     }
 
