@@ -19,6 +19,8 @@ php artisan vendor:publish --tag=JusBrasil
 JUSBRASIL_HOST='https://dossier-api.jusbrasil.com.br'
 JUSBRASIL_API='/v5'
 JUSBRASIL_WEBHOOK=''
+
+# use o valor o (zero) para reduzir a quantidade de processo 'not delivered'
 JUSBRASIL_CACHE_CONTROL=86400
 
 # OBRIGATÓRIO
