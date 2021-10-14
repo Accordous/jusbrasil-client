@@ -2,16 +2,28 @@
 
 Esse pacote auxilia no consumo da API do JusBrasil utilizando Laravel.
 
-
 ## Instalação
-```
+```shell
 composer require accordous/jusbrasil-client
 ```
 
-## Requisitos
-- Composer 2
-- PHP 7.4+
-- Laravel 7+
+## Configuração
+
+- Publique o arquivo de configuração caso tenha interesse em alterar algum dos valores pré-definidos
+```shell
+php artisan vendor:publish --tag=JusBrasil
+```
+
+- Altere as configurações no arquivo `.env` do seu projeto Laravel
+```.dotenv
+JUSBRASIL_HOST='https://dossier-api.jusbrasil.com.br'
+JUSBRASIL_API='/v5'
+JUSBRASIL_WEBHOOK=''
+JUSBRASIL_CACHE_CONTROL=86400
+
+# OBRIGATÓRIO
+JUSBRASIL_TOKEN=
+```
 
 ## Recursos
 - Solicitar um dossier
@@ -69,7 +81,7 @@ $result = $response->json();
 ## Testes
 Configurando um arquivo `.env` os testes podem ser executados via docker utilizando o Makefile
 
-```
+```shell
 make phpunit 
 
 make phpunit --filter 'parametro1|parametro2'
